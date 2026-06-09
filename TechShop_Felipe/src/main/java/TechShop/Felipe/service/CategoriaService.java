@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package TechShop.Felipe.service;
 
 import TechShop.Felipe.domain.Categoria;
@@ -20,11 +17,25 @@ public class CategoriaService {
     }
     @Transactional(readOnly = true)
     
-    public List<Categoria> gCategorias(boolean activo){
+    public List<Categoria> getCategorias(boolean activo){
         if (activo) {
             return categoriaRepository.findByActivoTrue();
         }
         return categoriaRepository.findAll();
     }
-   
+
+    @Transactional(readOnly = true)
+    public Categoria getCategoria(Categoria categoria) {
+        return categoriaRepository.findById(categoria.getIdCategoria()).orElse(null);
+    }
+
+    @Transactional
+    public void save(Categoria categoria) {
+        categoriaRepository.save(categoria);
+    }
+
+    @Transactional
+    public void delete(Categoria categoria) {
+        categoriaRepository.delete(categoria);
+    }
 }

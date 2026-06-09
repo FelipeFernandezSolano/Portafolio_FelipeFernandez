@@ -18,7 +18,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Categoria")
+@Table(name = "categoria")
 public class Categoria implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,7 +33,7 @@ public class Categoria implements Serializable {
     @Size(max = 50)
     private String descripcion;
 
-    @Column(length = 1024)
+    @Column(name = "ruta_imagen", length = 1024)
     @Size(max = 1024)
     private String rutaImagen;
 
